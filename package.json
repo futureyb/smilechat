@@ -1,0 +1,26 @@
+{
+  "name": "damao",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@styils/vue": "^1.1.6",
+    "axios": "^1.3.3",
+    "pinia": "^2.0.34",
+    "pinia-plugin-persistedstate": "^3.1.0",
+    "sass": "^1.58.3",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6",
+    "vue-styled-components": "^1.6.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "vite": "^4.1.0"
+  }
+}

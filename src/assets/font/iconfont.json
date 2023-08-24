@@ -1,0 +1,51 @@
+{
+  "id": "4222677",
+  "name": "chat",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "749757",
+      "name": "消息",
+      "font_class": "xiaoxi1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "6129178",
+      "name": "138设置、系统设置、功能设置、属性",
+      "font_class": "shezhixitongshezhigongnengshezhishuxing",
+      "unicode": "e795",
+      "unicode_decimal": 59285
+    },
+    {
+      "icon_id": "6559390",
+      "name": "消息",
+      "font_class": "xiaoxi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "10562369",
+      "name": "Leaf",
+      "font_class": "Leaf",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "14055565",
+      "name": "添加好友",
+      "font_class": "tianjiahaoyou",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "14773879",
+      "name": "闪电",
+      "font_class": "shandian",
+      "unicode": "e746",
+      "unicode_decimal": 59206
+    }
+  ]
+}

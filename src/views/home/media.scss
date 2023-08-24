@@ -1,0 +1,31 @@
+@media screen and (max-width: 900px) {
+    .showIcon{
+        display: none;
+    }
+    body{
+        background-color: #272a37;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .showIcon{
+        display: none;
+    }
+
+    .left-nav-box{
+        display: none !important;
+    }
+
+    .chatRight{
+        display: none !important;
+    }
+
+    .online-person{
+        width: 100%;
+    }
+
+    .chatLeft{
+        width: 100% !important;
+        height: 100vh !important;
+    }
+}
