@@ -70,6 +70,7 @@ const aa = (e)=>{
     console.log(123,e)
 }
 
+
 let pcCurrent = ref("");
 let showChatWindow = ref(false);
 let chatWindowInfo = reactive({});
@@ -77,7 +78,33 @@ const clickPerson = (info) => {
     showChatWindow.value = true;
     chatWindowInfo = info;
     pcCurrent.value = info.id;
+    console.log(user_info.personList)
+    user_info.personList.forEach(item=>{
+        if(item.id == pcCurrent.value){
+            item.unreadMessageCount = 0
+        }
+    })
+    // if(pcCurrent.value == ){
+
+    // }
 };
+
+ws_store.wsMessae((msg)=>{
+    let data = JSON.parse(msg.data) 
+    console.log(user_info.personList)
+    console.log(pcCurrent.value)
+    if(pcCurrent.value != data.userId){
+        user_info.personList.map((item)=>{
+            if(item.id == data.userId){
+                console.log(item)
+                item.unreadMessageCount += 1
+            }
+           
+        })
+        console.log( user_info.personList)
+    }
+
+})
 
 onMounted(async () => {
     //  获取个人信息

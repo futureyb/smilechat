@@ -4,28 +4,26 @@
         :class="{ activeCard: props.personInfo.id == props.pcCurrent }"
     >
         <div class="info">
-            <div style="display: flex; align-items: center;flex: 1;">
-                <head-portrait
-                    :imgUrl="props.personInfo.header"
-                ></head-portrait>
-                <div class="info-detail">
-                    <div class="name">{{ props.personInfo.nickName }}</div>
-                    <div class="detail">{{ props.personInfo.signature }}</div>
+            <head-portrait :imgUrl="props.personInfo.header"></head-portrait>
+            <div class="info-detail">
+                <div class="name">{{ props.personInfo.nickName }}</div>
+                <div class="detail">
+                    {{ props.personInfo.signature }}
                 </div>
             </div>
-
-            <div
-                class="massage-tip"
-                v-show="props.personInfo.unreadMessageCount != 0"
-            >
-                {{ props.personInfo.unreadMessageCount | 0 }}
-            </div>
+        </div>
+        <div
+            class="massage-tip"
+            v-show="props.personInfo.unreadMessageCount != 0"
+        >
+            {{ props.personInfo.unreadMessageCount | 0 }}
         </div>
     </div>
 </template>
 
 <script setup>
 import HeadPortrait from "../HeadPortrait/HeadPortrait.vue";
+import { onMounted, watch } from "vue";
 let props = defineProps({
     //好友信息
     personInfo: {
@@ -40,6 +38,16 @@ let props = defineProps({
         default: true,
     },
 });
+
+
+onMounted(()=>{
+    console.log(props.pcCurrent)
+    // if(pcCurrent){
+
+    // }
+})
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -48,18 +56,17 @@ let props = defineProps({
     height: 80px;
     border-radius: 10px;
     background-color: rgb(50, 54, 68);
-    position: relative;
     margin: 25px 0;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
+
     .info {
-        width: 100%;
-        overflow: hidden;
+        height: auto;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
         .info-detail {
             margin-left: 20px;
             .name {
@@ -68,26 +75,18 @@ let props = defineProps({
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 margin-bottom: 5px;
-            }                                                              
+                width: 100%;
+            }
             .detail {
                 color: #5c6675;
                 overflow: hidden;
-                white-space: nowrap;
                 text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 1; /*行数*/
+                -webkit-box-orient: vertical;
                 font-size: 12px;
+                width: 100%;
             }
-        }
-
-        .massage-tip {
-            min-width: 25px;
-            height: 24px;
-            background-color: #eebefa;
-            border-radius: 100%;
-            display: flex;
-            color: #868e96;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
         }
     }
     &:hover {
@@ -97,12 +96,22 @@ let props = defineProps({
         // box-shadow:  0 5px 20px rgba(251, 152, 11, .5);
         .info {
             .info-detail {
-                flex: 1;
                 .detail {
                     color: #fff;
                 }
             }
         }
+    }
+    .massage-tip {
+        min-width: 24px;
+        height: 24px;
+        background-color: #eebefa;
+        border-radius: 100%;
+        display: flex;
+        color: #868e96;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
     }
 }
 .activeCard {

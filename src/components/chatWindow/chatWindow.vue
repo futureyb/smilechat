@@ -108,7 +108,7 @@
                             <span>{{ item.userinfo.nickName }}</span>
                             <span>{{ item.createAt }}</span>
                             <img
-                                src="https://img0.baidu.com/it/u=4060770951,4069855872&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+                                :src="item.userinfo.header"
                                 alt=""
                             />
                         </div>
@@ -141,7 +141,7 @@
 
 <script setup>
 import { watch, onMounted, ref, reactive, nextTick } from "vue";
-import { getChatMassAge, sendChatMassAgeApi } from "../../axios/api";
+import { getChatMassAge, readChatMassageApi } from "../../axios/api";
 import emoji from "../Emoji/Emoji.vue";
 import userStore from "../../store/user";
 import wsStore from "../../store/ws";
@@ -166,7 +166,6 @@ let chat = reactive({
 
 //右键点击事件
 const rightClickMsg = (e) => {
-    
     e.preventDefault();
 };
 
@@ -178,10 +177,16 @@ let showEmoji = ref(false);
 watch(
     () => props.frinedInfo,
     async (newVal, oldVal) => {
+        readChatMassage();
         await getchatmsg(newVal.id);
         scrollBottom();
     }
 );
+//将消息变成已读状态
+const readChatMassage = async () => {
+    await readChatMassageApi({ friendId: props.frinedInfo.id });
+};
+
 // 监听接受的消息
 ws_store.wsMessae(async (msg) => {
     //重新获取聊天记录
@@ -189,6 +194,9 @@ ws_store.wsMessae(async (msg) => {
     scrollBottom("smooth");
 });
 onMounted(async () => {
+    //将未读转成已读
+    readChatMassage();
+    //获取聊天记录
     await getchatmsg(props.frinedInfo.id);
     //滚动到最后一条信息
     scrollBottom();
@@ -197,6 +205,7 @@ onMounted(async () => {
 //滚动到最后一条信息
 const scrollBottom = (behavior = "auto") => {
     nextTick(() => {
+        if (setChatRef.value.length == 0) return;
         //寻找
         let target = setChatRef.value.filter(
             (item) =>
@@ -249,7 +258,7 @@ const sendEmoji = (e) => {
     position: relative;
 
     .top {
-        margin-bottom: 50px;
+        padding-bottom: 50px;
         &::after {
             content: "";
             display: block;
@@ -289,7 +298,7 @@ const sendEmoji = (e) => {
     }
     .botoom {
         width: 100%;
-        height: 70vh;
+        height: calc(100vh - 200px);
         background-color: rgb(50, 54, 68);
         border-radius: 20px;
         padding: 20px;

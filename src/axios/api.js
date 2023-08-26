@@ -15,3 +15,7 @@ export const getChatMassAge = (params) =>  request.get("/getChatMassAge",{params
 
 export const sendChatMassAgeApi = (data) =>  request.post("/sendChatMassAge",data)
 
+//将未读变成已读
+export const readChatMassageApi = (data) =>  request.post("/readChatMassage",data)
+
+
