@@ -66,10 +66,6 @@ let ws_store = wsStore();
 let user_info = reactive({
     personList: [],
 });
-const aa = (e)=>{
-    console.log(123,e)
-}
-
 
 let pcCurrent = ref("");
 let showChatWindow = ref(false);

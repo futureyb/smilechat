@@ -105,10 +105,10 @@ onMounted(()=>{
     .massage-tip {
         min-width: 24px;
         height: 24px;
-        background-color: #eebefa;
+        background-color: #e03131;
         border-radius: 100%;
         display: flex;
-        color: #868e96;
+        color: white;
         align-items: center;
         justify-content: center;
         font-size: 12px;
