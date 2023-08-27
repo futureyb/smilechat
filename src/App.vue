@@ -13,8 +13,11 @@
     
 </script>
 
-<style >
-@import url("./assets/font/iconfont.css");
+<style lang="scss">
+@import url("./assets/font/iconfont.scss");
+
+
+
 .logo {
     height: 6em;
     padding: 1.5em;
@@ -28,3 +31,5 @@
     filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+
+

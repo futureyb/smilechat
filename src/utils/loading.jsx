@@ -18,10 +18,9 @@ const model_main = styled('div', {
     padding: '10px',
     boxSizing: 'border-box',
     backgroundColor: '#d4c3fc',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    transform:"all .5s"
 })
-
-
 
 const messagebox = {
     props: {
@@ -43,6 +42,7 @@ const messagebox = {
 const showMsg = (msg, fn) => {
     let div = document.createElement('div')
     document.body.appendChild(div)
+
     let app = createApp(messagebox, {
         msg
     })

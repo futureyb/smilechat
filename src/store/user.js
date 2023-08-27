@@ -6,17 +6,20 @@ const useUserStore = defineStore('counter', {
         return {
             token: '',
             userInfo:null,
-            menuCurrent:"/home"
+            menuCurrent:"/home",
+            themeCurrent:'light'
         }
     },
     getters: {
-        total() {
-            return this.count * this.count
-        }
+        
 
     },
     actions: {
-        
+        changeTheme(val){
+            val = val?val:this.themeCurrent
+            window.document.documentElement.setAttribute("data-theme", val)
+            this.themeCurrent = val
+        }
     },
     persist: {
         key: 'user',    

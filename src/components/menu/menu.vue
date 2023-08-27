@@ -12,8 +12,8 @@
                 >
                     <div class="block"></div>
                     <span
-                        :class="['iconfont', item.icon]"
-                        style="color: #757889;font-size: 25px;"
+                        :class="['iconfont', item.icon,'icon_class']"
+                        style="font-size: 25px;"
                     ></span>
                 </li>
             </ul>
@@ -54,6 +54,7 @@ let menuList = ref([
 
 const changeMenu = (routerPath) => {
     if(!routerPath) return alert("暂未开放")
+    console.log(routerPath)
     user_store.menuCurrent = routerPath;
     router.replace({
         path:routerPath,
@@ -64,7 +65,6 @@ const changeMenu = (routerPath) => {
 <style lang="scss" scoped>
 .nav {
     width: 100px;
-    height: 100%;
     position: relative;
     .nav-menu-wrapper {
         .menu-list {
@@ -76,7 +76,7 @@ const changeMenu = (routerPath) => {
                 cursor: pointer;
                 position: relative;
                 .block {
-                    background-color: rgb(29, 144, 245);
+                    @include getCssAttribute("background","menu_select_color");
                     position: absolute;
                     left: 0px;
                     width: 6px;
@@ -94,6 +94,10 @@ const changeMenu = (routerPath) => {
                         opacity: 1;
                     }
                 }
+
+                .icon_class{
+                    @include getCssAttribute("color","menu_icon_color",'false');
+                }
             }
         }
     }
@@ -104,8 +108,8 @@ const changeMenu = (routerPath) => {
     }
 }
 .activeNav {
-    span {
-        color: rgb(29, 144, 245) !important;
+    .icon_class {
+        @include getCssAttribute("color","menu_select_icon_color");
     }
     .block {
         opacity: 1 !important;

@@ -8,7 +8,6 @@ export const getUserVideoApi = () => request.get("/video", { responseType: 'arra
 
 export const getUserInfoApi = () => request.get("/getUserInfo")
 
-
 export const getUserFriendsApi = () => request.get("/getfriends")
 
 export const getChatMassAge = (params) =>  request.get("/getChatMassAge",{params})

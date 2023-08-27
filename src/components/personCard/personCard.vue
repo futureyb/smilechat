@@ -55,7 +55,7 @@ onMounted(()=>{
     width: 100%;
     height: 80px;
     border-radius: 10px;
-    background-color: rgb(50, 54, 68);
+    @include getCssAttribute("background","option_card_color");
     margin: 25px 0;
     display: flex;
     align-items: center;
@@ -70,15 +70,16 @@ onMounted(()=>{
         .info-detail {
             margin-left: 20px;
             .name {
-                color: #fff;
+                @include getCssAttribute("color","option_card_name_color",'false');
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 margin-bottom: 5px;
                 width: 100%;
+                font-weight: 600;
             }
             .detail {
-                color: #5c6675;
+                @include getCssAttribute("color","option_card_info_color",'false');  
                 overflow: hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
@@ -90,14 +91,19 @@ onMounted(()=>{
         }
     }
     &:hover {
-        background-color: #1d90f5;
+        @include getCssAttribute("background-color","option_select_card_color");
+
+        
         transition: 0.3s;
-        box-shadow: 0px 0px 10px 0px rgba(0, 136, 255);
-        // box-shadow:  0 5px 20px rgba(251, 152, 11, .5);
+        @include getCssAttribute("background-color","option_select_card_color");
+        @include setShowBox("option_select_card_shadow_color");
         .info {
             .info-detail {
+                .name{
+                    @include getCssAttribute("color","option_select_card_name_color");
+                }
                 .detail {
-                    color: #fff;
+                     @include getCssAttribute("color","option_select_card_info_color");
                 }
             }
         }
@@ -105,23 +111,26 @@ onMounted(()=>{
     .massage-tip {
         min-width: 24px;
         height: 24px;
-        background-color: #e03131;
+        @include getCssAttribute('background', 'option_select_card_tip_color');
         border-radius: 100%;
         display: flex;
-        color: white;
+        @include getCssAttribute('color', 'option_select_card_tip_font_color');
         align-items: center;
         justify-content: center;
         font-size: 12px;
     }
 }
 .activeCard {
-    background-color: #1d90f5;
+    @include getCssAttribute("background-color","option_select_card_color");
     transition: 0.3s;
-    box-shadow: 3px 2px 10px 0px rgba(0, 136, 255);
+    @include setShowBox("option_select_card_shadow_color");
     .info {
         .info-detail {
+            .name{
+                @include getCssAttribute("color","option_select_card_name_color");
+            }
             .detail {
-                color: #fff;
+                @include getCssAttribute("color","option_select_card_info_color");
             }
         }
     }

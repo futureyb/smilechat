@@ -21,7 +21,6 @@ let ws_store = wsStore();
 .main{
     max-width:100%;
     height: 100vh;
-    background-color: #272a37;
 .menu-header-box{
     width: 100px;
     height: 100px;

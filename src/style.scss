@@ -1,0 +1,12 @@
+
+// @import "./thems/handel.scss";
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    @include getCssAttribute("background","page_background_color");
+}
+
+

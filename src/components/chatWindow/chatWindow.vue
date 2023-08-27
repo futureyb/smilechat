@@ -121,7 +121,7 @@
                 </div>
                 <div class="emoji-content">
                     <emoji
-                        v-show="showEmoji"
+                        v-if="showEmoji"
                         @sendEmoji="sendEmoji"
                         @closeEmoji="clickEmoji"
                     ></emoji>
@@ -140,12 +140,16 @@
 </template>
 
 <script setup>
-import { watch, onMounted, ref, reactive, nextTick } from "vue";
+import { watch, onMounted, ref, reactive, nextTick,defineAsyncComponent } from "vue";
 import { getChatMassAge, readChatMassageApi } from "../../axios/api";
-import emoji from "../Emoji/Emoji.vue";
 import userStore from "../../store/user";
 import wsStore from "../../store/ws";
 import FileCard from "../fileCard/fileCard.vue";
+import loading from "../../utils/loading";
+
+//表情组件
+const emoji = defineAsyncComponent(()=> import("../Emoji/Emoji.vue"))
+
 //导入存储在缓存的用户信息
 let user_store = userStore();
 let ws_store = wsStore();
@@ -166,6 +170,10 @@ let chat = reactive({
 
 //右键点击事件
 const rightClickMsg = (e) => {
+    let aa = loading("你好啊")
+    setTimeout(()=>{
+    //    aa.close()
+    },2000)
     e.preventDefault();
 };
 

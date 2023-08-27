@@ -1,0 +1,84 @@
+$themes: (
+    light: ( //字体
+        font_color1: #414141,
+        font_color2: white,
+
+        //背景
+        page_background_color:#272a37,
+        //icon的图标颜色
+        menu_icon_color:#757889,
+        //icon选中的颜色
+        menu_select_icon_color:#1d90f5,
+        //菜单选中的颜色
+        menu_select_color:#1d90f5,
+        //选项卡的颜色
+        option_card_color:#323644,
+         //选项卡未选中的标题颜色
+         option_card_name_color: #ffffff,
+         option_card_info_color: #5c6675,
+        //选项卡选中的颜色
+        option_select_card_color:#1d90f5,
+        //选项卡的阴影颜色
+        option_select_card_shadow_color:0px 0px 10px 0px #1d90f5,
+         //选项卡选中标题的颜色
+         option_select_card_name_color:#ffffff,
+         //选项卡选中信息的颜色
+         option_select_card_info_color:#f59f00 ,
+
+
+         //选项卡的消息提示颜色
+         option_select_card_tip_color: #e03131,
+         //选项卡的消息提示文字颜色
+         option_select_card_tip_font_color: #ffffff,
+
+        background_color1: #fff,
+        background_color2: #f0f2f5,
+        background_color3: red,
+        background_color4: #2674e7,
+
+        //边框
+        border_color1: #3d414a,
+
+    ),
+
+    dark: ( //字体
+        font_color1: #a7a7a7,
+        font_color2: white,
+
+
+
+        //背景
+        page_background_color:#e9759a,
+        menu_icon_color:#ffffff,
+        menu_select_icon_color:#ffa35f,
+        //icon的图标颜色
+        menu_select_color:#ffa35f,
+
+        option_card_color:#ffffff,
+        //选项卡未选中的标题颜色
+        option_card_name_color: #7b8087,
+        option_card_info_color: #7b8087,
+        //选中选项卡图片的颜色
+        option_select_card_color:#ffa35f,
+        //选中选项卡图片的阴影
+        option_select_card_shadow_color:0px 0px 10px 0px #ffa35f,
+        //选项卡选中的标题的颜色
+        option_select_card_name_color:#ffffff,
+        //选项卡信息的颜色
+        option_select_card_info_color:#ffffff,
+         //选项卡的消息提示颜色
+         option_select_card_tip_color: #eabad0,
+         //选项卡的消息提示文字颜色
+         option_select_card_tip_font_color: #364865,
+        // #7b8087
+
+        background_color1: #1b2531,
+        background_color2: #283142,
+        background_color3: #1e6ceb,
+        background_color4: #323e4e,
+
+        //边框
+        border_color1: #3d414a,
+
+    )
+);

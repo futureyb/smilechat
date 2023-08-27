@@ -10,13 +10,13 @@
             <menu-list
                 style="
                     width: 100px;
-                    height: calc(100vh - 100px);
-                    background: #272a37;
+                    
                 "
             ></menu-list>
+            <div style="width: 50px;height: 50px;background-color: aquamarine;" @click="changeTheme"></div>
         </div>
 
-        <div style="flex: 1; background: #272a37">
+        <div style="flex: 1;">
             <div class="chatHome">
                 <div class="chatLeft">
                     <div class="title">
@@ -53,15 +53,16 @@
 </template>
 
 <script setup>
-import { onMounted, reactive, ref, toRef } from "vue";
+import { onMounted, reactive, ref, defineAsyncComponent } from "vue";
 import { getUserFriendsApi, getUserInfoApi } from "../../axios/api";
 import menuList from "../../components/menu/menu.vue";
 import personCard from "../../components/personCard/personCard.vue";
-import chatWindow from "../../components/chatWindow/chatWindow.vue";
 import userStore from "../../store/user";
 import wsStore from "../../store/ws";
 let user_store = userStore();
 let ws_store = wsStore();
+//异步组件
+const chatWindow = defineAsyncComponent(()=> import("../../components/chatWindow/chatWindow.vue"))
 
 let user_info = reactive({
     personList: [],
@@ -80,10 +81,13 @@ const clickPerson = (info) => {
             item.unreadMessageCount = 0
         }
     })
-    // if(pcCurrent.value == ){
-
-    // }
 };
+
+let aa = user_store.themeCurrent
+const changeTheme = ()=>{
+    aa = aa == "light"? "dark":"light"
+    user_store.changeTheme(aa)
+}
 
 ws_store.wsMessae((msg)=>{
     let data = JSON.parse(msg.data) 
@@ -121,7 +125,6 @@ onMounted(async () => {
     .left-nav-box {
         display: flex;
         flex-direction: column;
-        background: #272a37;
         align-items: center;
         .left-nav-header {
             width: 100%;

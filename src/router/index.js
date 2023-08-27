@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory,createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
 
 
 //路由数组
@@ -16,12 +16,17 @@ const routes = [
         component: () => import("../views/home/home.vue")
     },
     {
-        //基本格式
         path: "/addFriends",
         name: "addFriends",
         component: () => import("../views/addFriends/addFriends.vue")
+    },
+    {
+        //基本格式
+        path: "/test",
+        name: "test",
+        component: () => import("../views/test/test.vue")
     }
-   
+
 ];
 
 

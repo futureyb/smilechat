@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
-import './style.css'
+import './style.scss'
 import router from "./router/index"
-import store from "./store/ws"
+import ws_store from "./store/ws"
+import user_store from "./store/user"
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
@@ -11,8 +12,10 @@ pinia.use(piniaPluginPersistedstate)
 createApp(App).use(router).use(pinia).mount('#app')
 
 router.beforeEach((to, from, next) => {
+    
     if(to.name !== "login" && !WebSocketManager.instance ){
-        store().wsConnection()
+        ws_store().wsConnection()
+        user_store().changeTheme()
     }
     next()
 })
