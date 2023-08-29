@@ -55,8 +55,8 @@
                             class="chat-text"
                             v-if="item.type == 0"
                             @contextmenu.prevent="rightClickMsg"
+                            v-html="item.message"
                         >
-                            {{ item.message }}
                         </div>
                         <div class="chat-img" v-if="item.chatType == 1">
                             <img
@@ -86,8 +86,8 @@
                         :data-id="index"
                         v-else
                     >
-                        <div class="chat-text" v-if="item.type == 0">
-                            {{ item.message }}
+                        <div class="chat-text" v-if="item.type == 0" v-html="item.message">
+                           
                         </div>
                         <div class="chat-img" v-if="item.type == 1">
                             <img
@@ -130,6 +130,7 @@
                     class="inputs"
                     v-model="chat.user_inp"
                     @keydown.enter="sendText"
+                    maxlength="500"
                 />
                 <div class="send boxinput" @click="sendText">
                     <img src="../../assets/img/emoji/rocket.png" alt="" />
@@ -233,6 +234,10 @@ const scrollBottom = (behavior = "auto") => {
 const getchatmsg = async (friendId) => {
     let chat_msg = await getChatMassAge({ friendId });
     chat.chatList = chat_msg.data;
+    let regex = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
+    chat.chatList.forEach(item=>{
+        item.message = `<span>${item.message.replace(regex, '<a href="$&">$&</a>')}</span>` ;
+    })
 };
 
 const sendText = async () => {
