@@ -1,6 +1,6 @@
 //对axios进行二次封装,将刚才下载好的axios导入进来
 import axios from "axios";
-const ip = "http://192.168.10.105:3001"
+const ip = "http://192.168.10.109:3001"
 //2. 利用axios对象的方法create,去创建一个axios实例
 //requests就是axios,只不过稍微配置一下
 import userStore from "../store/user"

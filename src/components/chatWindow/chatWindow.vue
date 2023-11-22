@@ -265,6 +265,6 @@ const sendEmoji = (e) => {
 };
 </script>
 
-<style>
-@import url("./chatWindow.scss");
+<style scoped lang="scss">
+@import "./chatWindow.scss";
 </style>

@@ -59,10 +59,12 @@ import menuList from "../../components/menu/menu.vue";
 import personCard from "../../components/personCard/personCard.vue";
 import userStore from "../../store/user";
 import wsStore from "../../store/ws";
+import chatWindow from "../../components/chatWindow/chatWindow.vue"
+
 let user_store = userStore();
 let ws_store = wsStore();
 //异步组件
-const chatWindow = defineAsyncComponent(()=> import("../../components/chatWindow/chatWindow.vue"))
+// const chatWindow = defineAsyncComponent(()=> import("../../components/chatWindow/chatWindow.vue"))
 
 let user_info = reactive({
     personList: [],
@@ -118,7 +120,7 @@ onMounted(async () => {
 });
 </script>
 <style lang="scss">
-@import url("./media.scss");
+// @import url("./media.scss");
 .home-box {
     display: flex;
 
