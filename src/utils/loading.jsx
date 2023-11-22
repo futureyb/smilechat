@@ -4,22 +4,18 @@ import { styled } from '@styils/vue';
 
 const model_box = styled('div', {
     position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 9999
+    zIndex: 9999,
+    background:'#d4c3fc',
+    borderRadius:'5px'
 })
+
 
 const model_main = styled('div', {
     padding: '10px',
     boxSizing: 'border-box',
     backgroundColor: '#d4c3fc',
     borderRadius: '5px',
-    transform:"all .5s"
+    transform: "all .5s"
 })
 
 const messagebox = {
@@ -29,29 +25,46 @@ const messagebox = {
             default: '加载中'
         }
     },
+
+    dynamicStyle :{
+        color: 'red',
+    },
     render(ctx) {
         let { $props, $emit } = ctx
-        return (<model_box>
-            <model_main >{$props.msg}</model_main>
+        console.log($props)
+        let dynamicStyle ={
+            top:$props.msg.y + 'px',
+            left:$props.msg.x + 'px',
+        }
+        return (<model_box style={dynamicStyle}>
+            <model_main >{$props.msg.content}</model_main>
+
+            <model_main >{$props.msg.content}</model_main>
         </model_box>)
 
     }
 }
 
 
-const showMsg = (msg, fn) => {
+const showMsg = (content, x, y) => {
+    let close=()=>{
+        app.unmount(div)
+        div.remove()
+    }
     let div = document.createElement('div')
     document.body.appendChild(div)
-
     let app = createApp(messagebox, {
-        msg
+        msg: {
+            content,
+            x,
+            y
+        },
+        aa: "322"
+
     })
     app.mount(div)
     return {
-        close() {
-            app.unmount(div)
-            div.remove()
-        }
+        close
     }
 }
 export default showMsg

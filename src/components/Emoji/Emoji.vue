@@ -108,14 +108,16 @@ const closeEmoji = () => {
             position: relative;
             &::-webkit-scrollbar {
                 /*滚动条整体样式*/
-                width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
-                height: 1px;
+                width: 0px; /*高宽分别对应横竖滚动条的尺寸*/
+                height: 0px;
+                display: none;
             }
             &::-webkit-scrollbar-thumb {
                 /*滚动条里面小方块*/
-                border-radius: 10px;
-                box-shadow: inset 0 0 5px rgba(97, 184, 179, 0.1);
-                background: rgb(95, 101, 122);
+                display: none;
+                // border-radius: 10px;
+                // box-shadow: inset 0 0 5px rgba(97, 184, 179, 0.1);
+                // background: rgb(95, 101, 122);
             }
             &::-webkit-scrollbar-track {
                 /*滚动条里面轨道*/

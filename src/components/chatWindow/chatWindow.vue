@@ -161,9 +161,7 @@ let props = defineProps({
         default: () => {},
     },
 });
-const aa = (e) => {
-    console.log(123, e);
-};
+
 let chat = reactive({
     chatList: [], //与好友的聊天记录
     user_inp: "", //用户输入的数据
@@ -171,10 +169,13 @@ let chat = reactive({
 
 //右键点击事件
 const rightClickMsg = (e) => {
-    let aa = loading("你好啊")
-    setTimeout(()=>{
+
+    console.log(e.pageX)
+    console.log(e.pageY)
+    let aa = loading("asdasd",e.pageX,e.pageY)
+    // setTimeout(()=>{
     //    aa.close()
-    },2000)
+    // },2000)
     e.preventDefault();
 };
 
@@ -203,6 +204,8 @@ ws_store.wsMessae(async (msg) => {
     //重新获取聊天记录
     await getchatmsg(props.frinedInfo.id);
     scrollBottom("smooth");
+    //接收到消息将消息变成已读
+    readChatMassage()
 });
 onMounted(async () => {
     //将未读转成已读
