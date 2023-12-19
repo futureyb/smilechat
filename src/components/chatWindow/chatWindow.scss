@@ -93,7 +93,7 @@
                         margin: 10px 0;
                         color: #fff;
                         font-size: 14px;
-                        img {
+                        .info-header {
                             width: 30px;
                             height: 30px;
                             border-radius: 50%;
@@ -140,8 +140,14 @@
                         font-size: 14px;
                         display: flex;
                         justify-content: flex-end;
-
-                        img {
+                        img{
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            vertical-align: middle;
+                            margin-left: 10px;
+                        }
+                        .info-header {
                             width: 30px;
                             height: 30px;
                             border-radius: 50%;

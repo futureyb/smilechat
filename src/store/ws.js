@@ -15,7 +15,7 @@ const wsStore = defineStore('wsSocket', {
         wsConnection() {
             let user_store = userStore()
             if (!WebSocketManager.instance) {
-                WebSocketManager.instance = new WebSocketManager("ws://192.168.10.109:3001/socketTest", [user_store.token])
+                WebSocketManager.instance = new WebSocketManager("ws://localhost:3001/socketTest", [user_store.token])
                 WebSocketManager.instance.websocket.addEventListener('open', () => {
                     console.log("链接成功")
                 })
