@@ -74,7 +74,7 @@
               <!-- <img :src="item.userinfo.header" alt="" /> -->
               <lazy :src="item.userinfo.header" class="info-header" ></lazy>
               <span>{{ item.userinfo.nickName }}</span>
-              <span>{{ item.createAt }}</span>
+              <span>{{ item.show_time }}</span>
             </div>
           </div>
           <div class="chat-me" ref="setChatRef" :data-id="index" v-else>
@@ -99,8 +99,9 @@
                             </div>
                         </div> -->
             <div class="info-time">
+              <span>{{ item.show_time }}</span>
+
               <span>{{ item.userinfo.nickName }}</span>
-              <span>{{ item.createAt }}</span>
               
               <lazy :src="item.userinfo.header" class="info-header" ></lazy>
             </div>
@@ -125,7 +126,8 @@
           maxlength="500"
         />
         <div class="send boxinput" @click="sendText">
-          <img src="../../assets/img/emoji/rocket.png" alt="" />
+          发送
+          <!-- <img src="../../assets/img/emoji/rocket.png" alt="" /> -->
         </div>
       </div>
     </div>
@@ -147,7 +149,7 @@ import wsStore from "../../store/ws";
 import FileCard from "../fileCard/fileCard.vue";
 import lazy from "../lazyImg/lazyImg.vue";
 import loading from "../../utils/loading";
-import {copyText} from "../../utils/urils"
+import {copyText,calculateShowTime} from "../../utils/urils"
 //表情组件
 const emoji = defineAsyncComponent(() => import("../Emoji/Emoji.vue"));
 
@@ -243,6 +245,7 @@ const getchatmsg = async (friendId) => {
   let regex =
     /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
   chat.chatList.forEach((item) => {
+    item.show_time = calculateShowTime(item.createAt)
     item.message = `${item.message.replace(
       regex,
       '<a href="$&">$&</a>'
